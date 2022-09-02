@@ -1,4 +1,4 @@
-# mabook
+# super-duper-slider
 
 ## Build Setup
 

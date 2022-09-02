@@ -32,6 +32,7 @@ export default {
 </script>
 
 <style scoped>
+/* make scrollbar transparent */
 /* firefox */
 #slider3-container {
   scrollbar-width: none;
@@ -41,6 +42,6 @@ export default {
 /* chrome */
 #slider3-container::-webkit-scrollbar {
   width: 0px;
-  background: transparent; /* make scrollbar transparent */
+  background: transparent;
 }
 </style>

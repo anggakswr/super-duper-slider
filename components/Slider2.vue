@@ -50,7 +50,6 @@ export default {
   name: 'SliderTwo',
   data() {
     return {
-      theInterval: null,
       currentSlide: 1,
     }
   },

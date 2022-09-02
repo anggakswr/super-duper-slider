@@ -1,7 +1,8 @@
 <template>
   <!-- slider container container (to add nav btns) -->
   <div class="flex items-center gap-x-8">
-    <button class="text-white">&larr;</button>
+    <!-- prev btn -->
+    <button class="text-white text-2xl" @click="prev">&larr;</button>
 
     <!-- slider container -->
     <div class="w-[500px] overflow-hidden">
@@ -12,15 +13,18 @@
           v-for="number in 5"
           :key="'pic-' + number"
           class="w-[500px] min-w-[500px] max-w-[500px]"
-          :style="{ transform: `translateX(${-500 * counter}px)` }"
+          :style="{ transform: `translateX(${-500 * (currentSlide - 1)}px)` }"
         >
           <img
-            :src="'https://picsum.photos/500/35' + number"
-            :alt="'Pic ' + number"
+            :src="`/slider2/${number}.jpg`"
+            :alt="'Slider 2 Pic ' + number"
           />
         </div>
       </div>
     </div>
+
+    <!-- next btn -->
+    <button class="text-white text-2xl" @click="next">&rarr;</button>
   </div>
 </template>
 
@@ -30,20 +34,22 @@ export default {
   data() {
     return {
       theInterval: null,
-      counter: 0,
+      currentSlide: 1,
     }
   },
   methods: {
     prev() {
-      if (this.counter > 0) {
-        this.counter--
+      if (this.currentSlide > 1) {
+        this.currentSlide--
+      } else {
+        this.currentSlide = 5
       }
     },
     next() {
-      if (this.counter === 4) {
-        this.counter = 0
+      if (this.currentSlide === 5) {
+        this.currentSlide = 1
       } else {
-        this.counter++
+        this.currentSlide++
       }
     },
   },

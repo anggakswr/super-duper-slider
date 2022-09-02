@@ -8,12 +8,9 @@
         v-for="number in 5"
         :key="'pic-' + number"
         class="w-[250px] min-w-[250px] max-w-[250px]"
-        :style="{ transform: `translateX(${-250 * counter}px)` }"
+        :style="{ transform: `translateX(${-250 * (currentSlide - 1)}px)` }"
       >
-        <img
-          :src="'https://picsum.photos/250/10' + number"
-          :alt="'Pic ' + number"
-        />
+        <img :src="`/slider1/${number}.jpg`" :alt="'Slider 1 Pic ' + number" />
       </div>
     </div>
   </div>
@@ -25,7 +22,7 @@ export default {
   data() {
     return {
       theInterval: null,
-      counter: 0,
+      currentSlide: 1,
     }
   },
   mounted() {
@@ -36,10 +33,10 @@ export default {
   },
   methods: {
     nextSlide() {
-      if (this.counter === 4) {
-        this.counter = 0
+      if (this.currentSlide === 5) {
+        this.currentSlide = 1
       } else {
-        this.counter++
+        this.currentSlide++
       }
     },
   },
